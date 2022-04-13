@@ -1,0 +1,13 @@
+[
+    {
+      "name": "test-month",
+      "datesplit": 3,
+      "url": "https://logs.fr.cloud.gov/api/reporting/generate/csv?jobParams=INSERT-JOB-PARAMS-HERE"
+    },
+    {
+      "name": "test-2022",
+      "datesplit": 6,
+      "url": "https://logs.fr.cloud.gov/api/reporting/generate/csv?jobParams=INSERT-JOB-PARAMS-HERE"
+    }
+]
+  

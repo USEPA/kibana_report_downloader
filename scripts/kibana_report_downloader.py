@@ -8,15 +8,16 @@ import json
 from codecs import encode, decode
 import getopt, sys
 import urllib.parse
+import csv
 
 # Command Line based globals
-report_file = ""
-data_folder = ""
-wip_folder = ""
+report_file = ".\\reports\\run.json" #.\\reports\\run.json
+data_folder = ".\.data" #.\.data
+wip_folder = ".\\.data\\wip" #.\\.data\\wip
 wip_remove_flag = False
-kibanaEndpoint = ""
-startDateGBL = ""
-endDateGBL = ""
+kibanaEndpoint = "https://logs.fr.cloud.gov"
+startDateGBL = "2022-02-01T00:00:00.000Z" #2022-01-01T00:00:00.000Z
+endDateGBL = "2022-04-13T00:00:00.000Z" #"2022-04-01T00:00:00.000Z"
 
 # CONST
 additional_split = 8
@@ -67,16 +68,10 @@ def mergeMultipleFiles(report_filename):
         raise Exception("unable to properly parse " + dzin);
     return rez;
  
-   merge_files = sorted(
-       filter( 
-         os.path.isfile,
-         glob.glob(wip_folder + "\\" + report_filename + "*.csv") 
-       )
-      ,key = isolator
-   );
-
+   merge_files = glob.glob(wip_folder + "\\" + "*.csv")
    header_saved = False
    with open(data_folder + "\\" + report_filename + ".csv",'w', encoding="utf8") as fout:
+      writer = csv.writer(fout)
       for fname in merge_files:
          with open(fname, encoding="utf8") as fin:
             header = next(fin)
@@ -85,6 +80,7 @@ def mergeMultipleFiles(report_filename):
                header_saved = True
             for line in fin:
                fout.write(line)
+            writer.writerows(fin.readlines())
 
 
 #########################################################################################################
