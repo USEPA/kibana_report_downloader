@@ -20,18 +20,22 @@ The prerequisite to this section is Obtaining Kibana report definitions.
  3. *Suggested step* Create another git repository to store your custom Kibana report definitions.
  4.  Cache your Kibana report definitions in the run.json file in the reports folder. See the [sample .json](/docs/sample_report.json) file format.
  5. Obtain an active Kibana security token (right now this means the value of uaa-auth).
- 6. Run the Kibana report downloader script.
+ 6. Modify the [kibana_report_download script](./kibana_report_downloader.py) startDateGBL and endDateGBL to meed your download needs. 
+ 7. Run the Kibana report downloader script.
 
 ## Usage Example (against Kibana running in cloud.gov)
 
 **Updated Example:**
+```
 python kibana_report_downloader.py --auth=*put value of uaa-auth here*
+```
 
  - **auth** = The value of uaa-auth which provides access to Kibana from the script (*future* find another way to obtain authentication information)
 
 **Original Example:** 
-
+```
 python kibana_report_downloader.py --del_wip=false --data_folder=.\data --report_file=.\\reports\\run.json --start_date=2021-12-01T00:00:00.000Z --end_date=2021-12-31T23:59:59.999Z --kibana_api=https://logs.fr.cloud.gov --auth=*put value of uaa-auth here*
+```
 
  - **del_wip** = true/false flag to determine if the work-in-progress folder should be deleted after report concatenation. It can be useful to keep if you want to debug the processing results.
  - **data_folder** = folder path to where the downloaded report(s) should be saved. 
