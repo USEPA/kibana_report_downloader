@@ -16,8 +16,9 @@ data_folder = ".\.data" #.\.data
 wip_folder = ".\\.data\\wip" #.\\.data\\wip
 wip_remove_flag = False
 kibanaEndpoint = "https://logs.fr.cloud.gov"
-startDateGBL = "2022-02-01T00:00:00.000Z" #2022-01-01T00:00:00.000Z
-endDateGBL = "2022-04-13T00:00:00.000Z" #"2022-04-01T00:00:00.000Z"
+startDateGBL = "2022-04-27T00:00:00.000Z" #2022-01-01T00:00:00.000Z
+endDateGBL = "2022-05-04T00:00:00.000Z" #"2022-04-01T00:00:00.000Z"
+auth = sys.argv[1]
 
 # CONST
 additional_split = 8

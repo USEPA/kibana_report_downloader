@@ -1,0 +1,32 @@
+#!/bin/bash
+
+echo "Running..."
+
+set -e
+
+    AUTH="INSERT-AUTH-TOKEN"
+
+echo "Have you retrieved your uaa auth token? (y/n)"
+read input
+
+if [ $input == "n" ]; then
+    echo "Please retrieve your uaa-auth token, insert it in the run script, and rerun the script..."
+    exit
+
+else if [ $input == "y" ]; then
+    echo "Starting the kibana script..."
+    python kibana_report_downloader.py --auth=$AUTH
+
+    echo "Completed kibana script..."
+
+    echo "Starting the cleanup script..."
+    python cleanup_reports.py
+
+    echo "Completed cleanup script..."
+
+else if [ $input != "n" ] || [ $input != "y" ]; then
+    echo "Please insert y or n. Exiting..."
+    exit
+fi
+fi
+fi
