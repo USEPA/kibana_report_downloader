@@ -11,14 +11,14 @@ import urllib.parse
 import csv
 
 # Command Line based globals
-report_file = ".\\reports\\run.json" #.\\reports\\run.json
+report_file = sys.argv[1] #.\\reports\\run-#.json
 data_folder = ".\.data" #.\.data
 wip_folder = ".\\.data\\wip" #.\\.data\\wip
-wip_remove_flag = False
+wip_remove_flag = True
 kibanaEndpoint = "https://logs.fr.cloud.gov"
-startDateGBL = "2022-04-27T00:00:00.000Z" #2022-01-01T00:00:00.000Z
-endDateGBL = "2022-05-04T00:00:00.000Z" #"2022-04-01T00:00:00.000Z"
-auth = sys.argv[1]
+startDateGBL = "2022-05-04T04:00:00.000Z" #2022-01-01T00:00:00.000Z
+endDateGBL = "2022-05-12T04:00:00.000Z" #"2022-04-01T00:00:00.000Z"
+auth = sys.argv[2]
 
 # CONST
 additional_split = 8
