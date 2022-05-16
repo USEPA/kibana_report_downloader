@@ -6,10 +6,10 @@ set -e
 
     AUTH="INSERT-AUTH-TOKEN"
 
-    RUN_ONE=".\\reports\\run-1.json"
-    RUN_TWO=".\\reports\\run-2.json"
-    RUN_THREE=".\\reports\\run-3.json"
-    RUN_FOUR=".\\reports\\run-4.json"
+    #RUN_ONE=".\\reports\\run-1.json"
+    #RUN_TWO=".\\reports\\run-2.json"
+    #RUN_THREE=".\\reports\\run-3.json"
+    #RUN_FOUR=".\\reports\\run-4.json"
 
 echo "Have you retrieved your uaa auth token? (y/n)"
 read input
@@ -25,54 +25,39 @@ else if [ $input == "y" ]; then
     #
     # echo "Completed kibana script..."
     #
-    # echo "Starting the cleanup script..."
-    # python cleanup_reports.py --report_file=$RUN_NUMBER
-    #
-    # echo "Completed cleanup script..."
 
-    ## APP-NAME - Prod APP ERROR Checks
+    ######################################
+    ## APP-NAME - Prod APP ERROR Checks ##
+    ######################################
+
     echo "Starting the kibana script for APP-NAME - Prod APP ERROR Checks..."
     python kibana_report_downloader.py --report_file=$RUN_ONE --auth=$AUTH
 
     echo "Completed kibana script..."
 
-    echo "Starting the cleanup script..."
-    python cleanup_reports.py --report_file=$RUN_ONE
-
-    echo "Completed cleanup script..."
-
-    ## APP-NAME - Prod CELL DESTROYED Audit
+    ##########################################
+    ## APP-NAME - Prod CELL DESTROYED Audit ##
+    ##########################################
     echo "Starting the kibana script for APP-NAME - Prod CELL DESTROYED Audit..."
     python kibana_report_downloader.py --report_file=$RUN_TWO --auth=$AUTH
 
     echo "Completed kibana script..."
 
-    echo "Starting the cleanup script..."
-    python cleanup_reports.py --report_file=$RUN_TWO
-
-    echo "Completed cleanup script..."
-
-    ## APP-NAME - Staging STG Checks
+    ###################################
+    ## APP-NAME - Staging STG Checks ##
+    ###################################
     echo "Starting the kibana script for APP-NAME - Staging STG Checks..."
     python kibana_report_downloader.py --report_file=$RUN_THREE --auth=$AUTH
 
     echo "Completed kibana script..."
 
-    echo "Starting the cleanup script..."
-    python cleanup_reports.py --report_file=$RUN_THREE
-
-    echo "Completed cleanup script..."
-
-    ## APP-NAME - Prod RTR Checks
+    ################################
+    ## APP-NAME - Prod RTR Checks ##
+    ################################
     echo "Starting the kibana script for APP-NAME - Prod RTR Checks..."
     python kibana_report_downloader.py --report_file=$RUN_FOUR --auth=$AUTH
 
     echo "Completed kibana script..."
-
-    echo "Starting the cleanup script..."
-    python cleanup_reports.py --report_file=$RUN_FOUR
-
-    echo "Completed cleanup script..."
 
 else if [ $input != "n" ] || [ $input != "y" ]; then
     echo "Please insert y or n. Exiting..."

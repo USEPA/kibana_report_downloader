@@ -23,7 +23,7 @@ The prerequisite to this section is Obtaining Kibana report definitions.
  6. Reuse and modify the SAMPLE RUN REPORT COMMANDS for as many reports as you need in the [bash script](./scripts/run). 
  7. Modify the [kibana_report_download script](./kibana_report_downloader.py) startDateGBL and endDateGBL to meed your download needs. 
         *IMPORTANT - the online Kibana report adjusts the UTC time in @timestamp to the browser's local timezone. If you're comparing the report results with the online Kibana report, you need to adjust the Kibana report filter (e.g., 4 hour adjustment during dayling savings time).*
- 8. Run the bash script to run Kibana report downloader and clean up report scripts.
+ 8. Run the bash script to run Kibana report downloader script.
 
     ```
     bash run
