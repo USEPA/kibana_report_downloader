@@ -22,7 +22,7 @@ The prerequisite to this section is Obtaining Kibana report definitions.
  5. Insert an active Kibana security token (right now this means the value of uaa-auth) into the [bash script](./scripts/run).
  6. Reuse and modify the SAMPLE RUN REPORT COMMANDS for as many reports as you need in the [bash script](./scripts/run). 
  7. Modify the [kibana_report_download script](./kibana_report_downloader.py) startDateGBL and endDateGBL to meed your download needs. 
-        *IMPORTANT - the online Kibana report adjusts the UTC time in @timestamp to the browser's local timezone. If you're comparing the report results with the online Kibana report, you need to adjust the Kibana report filter (e.g., 4 hour adjustment during dayling savings time).*
+        *IMPORTANT - If you're comparing the kibana report results with the online Kibana reports, you need to adjust the online Kibana report filter depending on daylight or standard time. For example, there is a 4-hour adjustment during daylight savings time, meaning the online Kibana report filter of 2022-05-04 @00:00:00.000Z ->  2022-05-12 @00:00:00.000Z would result in a kibana script adjust with a the start time: 2022-05-04 @04:00:00.000Z and an end time: 2022-05-12 @04:00:00.000Z. Standard time to UTC has a 5-hour adjustment.*
  8. Run the bash script to run Kibana report downloader script.
 
     ```

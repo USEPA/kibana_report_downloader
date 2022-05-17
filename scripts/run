@@ -44,9 +44,9 @@ else if [ $input == "y" ]; then
     echo "Completed kibana script..."
 
     ###################################
-    ## APP-NAME - Staging STG Checks ##
+    ## APP-NAME - Prod STG Checks ##
     ###################################
-    echo "Starting the kibana script for APP-NAME - Staging STG Checks..."
+    echo "Starting the kibana script for APP-NAME - Prod STG Checks..."
     python kibana_report_downloader.py --report_file=$RUN_THREE --auth=$AUTH
 
     echo "Completed kibana script..."
@@ -58,6 +58,10 @@ else if [ $input == "y" ]; then
     python kibana_report_downloader.py --report_file=$RUN_FOUR --auth=$AUTH
 
     echo "Completed kibana script..."
+
+    echo "Start cleanup script..."
+    python cleanup_reports.py
+    echo "Completed cleanup script..."
 
 else if [ $input != "n" ] || [ $input != "y" ]; then
     echo "Please insert y or n. Exiting..."

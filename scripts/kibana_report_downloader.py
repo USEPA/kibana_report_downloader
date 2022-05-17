@@ -71,10 +71,10 @@ def mergeMultipleFiles(report_filename):
  
    merge_files = glob.glob(wip_folder + "\\" + "*.csv")
    header_saved = False
-   with open(data_folder + "\\" + report_filename + ".csv",'w', encoding="utf8") as fout:
+   with open(data_folder + "\\" + report_filename + ".csv",'w', encoding="utf-8") as fout:
       writer = csv.writer(fout)
       for fname in merge_files:
-         with open(fname, encoding="utf8") as fin:
+         with open(fname, encoding="utf-8") as fin:
             header = next(fin)
             if not header_saved:
                fout.write(header)
