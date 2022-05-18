@@ -84,7 +84,7 @@ new_report_four.save()
 
 # Add filter to columns 
 wb_four = load_workbook(filename=new_report_four)
-ws_four = wb_two.active
+ws_four = wb_four.active
 
 ws_four.auto_filter.ref  = ws_four.dimensions
 wb_four.save('./.data/final-CAMPD-Prod-RTR-Checks.xlsx')

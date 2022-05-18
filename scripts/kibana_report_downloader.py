@@ -71,10 +71,10 @@ def mergeMultipleFiles(report_filename):
  
    merge_files = glob.glob(wip_folder + "\\" + "*.csv")
    header_saved = False
-   with open(data_folder + "\\" + report_filename + ".csv",'w', encoding="utf-8") as fout:
+   with open(data_folder + "\\" + report_filename + ".csv",'w', encoding="utf8") as fout:
       writer = csv.writer(fout)
       for fname in merge_files:
-         with open(fname, encoding="utf-8") as fin:
+         with open(fname, encoding="utf8") as fin:
             header = next(fin)
             if not header_saved:
                fout.write(header)
@@ -155,8 +155,14 @@ def watch4ReportCompletion(job_id, counter):
         data = response.json()
         if data[0]["_source"]["status"] == 'completed':
             notDone = False
+        elif data[0]["_source"]["status"] == 'processing': 
+            print("Waiting for increment: " + str(counter))
+            print("Status: Still processing...")
+            notDone == True
         else: 
             print("Waiting for increment: " + str(counter))
+            print("Other Status: " + data[0]["_source"]["status"])
+            notDone == True
     
     return
 

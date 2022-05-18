@@ -1,5 +1,5 @@
 # Kibana Report Downloader
-A simple python script that allows the downloading of Kibana reports based on a configurable timeframe and output file size.
+A simple python script that downloads all of the logs for each Kibana report based on a configurable timeframe and output file size. In contrast, the online Kibana report's "Generate CSV" feature will only download the records opened in the current table view. Log retention in cloud.gov is [180 days](https://cloud.gov/docs/deployment/logs/#web-based-logs-with-historic-log-data).
 
 ## Obtaining Kibana report definitions
 
@@ -18,7 +18,7 @@ The prerequisite to this section is Obtaining Kibana report definitions.
  1. Clone this repository.
  2. pip install requirements.txt (i.e., pip install -r requirements.txt)
  3. *Suggested step* Create another git repository to store your custom Kibana report definitions.
- 4.  Cache your Kibana report definitions in the run-#.json file in the reports folder. See the [sample .json](/docs/sample_report.json) file format.
+ 4.  Cache your Kibana report definitions in the run-#.json file in the reports folder. *For the data splits value, use the lowest number needed to download the logs (e.g., 3), otherwise a large data split value may result in longer Kibana queues that do not retrieve all the logs.* See the [sample .json](/docs/sample_report.json) file format.
  5. Insert an active Kibana security token (right now this means the value of uaa-auth) into the [bash script](./scripts/run).
  6. Reuse and modify the SAMPLE RUN REPORT COMMANDS for as many reports as you need in the [bash script](./scripts/run). 
  7. Modify the [kibana_report_download script](./kibana_report_downloader.py) startDateGBL and endDateGBL to meed your download needs. 
@@ -28,6 +28,7 @@ The prerequisite to this section is Obtaining Kibana report definitions.
     ```
     bash run
     ```
+ 9. Cross check the final downloaded reports and the online Kibana reports to determine if the number of records in each final downloaded report match the number of results of each online Kibana report.
 
 ## Disclaimer
 
