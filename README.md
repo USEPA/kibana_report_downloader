@@ -1,5 +1,7 @@
 # Kibana Report Downloader
-A simple python script that downloads all of the logs for each Kibana report based on a configurable timeframe and output file size. In contrast, the online Kibana report's "Generate CSV" feature will only download the records opened in the current table view. Log retention in cloud.gov is [180 days](https://cloud.gov/docs/deployment/logs/#web-based-logs-with-historic-log-data).
+This repository has been archived. Please visit [cloud.gov](https://cloud.gov/) for the latest information on accessing log data. 
+
+This is a simple python script that downloads all of the logs for each Kibana report based on a configurable timeframe and output file size. In contrast, the online Kibana report's "Generate CSV" feature will only download the records opened in the current table view. Log retention in cloud.gov is [180 days](https://cloud.gov/docs/deployment/logs/#web-based-logs-with-historic-log-data).
 
 ## Obtaining Kibana report definitions
 
